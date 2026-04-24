@@ -6,7 +6,7 @@ dbType: nvarchar(16)
 | --------- | :-: | ---------------------- | ------------------------------------------------------------------------------- |
 | Draft     |  0  | Wersja robocza         | Dokument jest w trakcie tworzenia                                               |
 | Sending   |  1  | Wysyłanie              | Dokument jest w trakcie przetwarzania i niedługo trafi do osób zatwierdzających |
-| Waiting   |  2  | Oczekiwanie na decyzję | Dokument dotarł do osób decyzyjnych i oczekuje na zatwierdzenie                 |
+| InReview  |  2  | Oczekiwanie na decyzję | Dokument dotarł do osób decyzyjnych i oczekuje na zatwierdzenie                 |
 | Cancelled |  3  | Anulowano              | Wniosek został anulowany                                                        |
 | Approved  |  4  | Zatwierdzono           | Dokument został rozpatrzony pozytywnie                                          |
 | Declined  |  5  | Odrzucono              | Wniosek został rozpatrzony negatywnie                                           |

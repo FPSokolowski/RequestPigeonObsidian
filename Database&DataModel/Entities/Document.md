@@ -20,11 +20,10 @@ First phase there will be few types handle: Leave, Refund, Purchase, BusinessTri
 ## Relationships  
 - Many-to-one with [[User]] (as Requestor)
 - Many-to-many with [[Acceptance]] (separate [[DocumentAcceptance]] FK's table)
-- 
-  
 ## Indexes  
 - IX_Document_Type 
 - IX_Document_DateTime
 - IX_Document_Type_Status
   
 ## Notes  
+* Settings for document Types are located in table [[DocumentSettings]]. Setting data should be cached.

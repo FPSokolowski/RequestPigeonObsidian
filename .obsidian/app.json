@@ -1,5 +1,6 @@
 {
   "alwaysUpdateLinks": true,
   "attachmentFolderPath": "./Attachments",
-  "showLineNumber": false
+  "showLineNumber": false,
+  "focusNewTab": true
 }

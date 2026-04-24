@@ -1,5 +1,6 @@
 {
   "cssTheme": "AnuPpuccin",
   "textFontFamily": "New York",
-  "baseFontSizeAction": true
+  "baseFontSizeAction": true,
+  "baseFontSize": 10
 }

@@ -1,0 +1,35 @@
+## Description  
+User/Employee/Board Member. At first phase employees, organization members and app users are simplified and combined into one table. There is IsActiveAccount variable to distinct only employee/member from employee/member with access to the app.
+
+## Columns  
+| Name               | Type .NET           | Type DB          | Nullable | Description                                                                                                                                                                                  | Notes                                                       |
+| ------------------ | ------------------- | ---------------- | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Id                 | Guid                | uniqueidentifier |    ❌     | Primary key                                                                                                                                                                                  | PK                                                          |
+| IsActiveAccount    | bool                | bit              |    ❌     | This one distinct if the record represents only organization member (employee/ board member/ external employee) without app's account from organization members with access to app's account | Default FALSE at create. At first login turn to true.       |
+| IsDemo             | bool                | bit              |    ✔     | Only for demo app version! Normally it should be null or FALSE.<br>When TRUE the user can't: be deleted, change password, remove permissions, block (manually), etc.                         | **Always NULL or FALSE (one exception: demo app version).** |
+| UserName           | string              | nvarchar(64)     |    ❌     | Unique login/userName                                                                                                                                                                        | Unique                                                      |
+| FirstName          | string              | nvarchar(64)     |    ❌     | First name                                                                                                                                                                                   |                                                             |
+| Surname            | string              | nvarchar(128)    |    ❌     | Surname                                                                                                                                                                                      |                                                             |
+| Email              | string              | nvarchar(128)    |    ✔     | Email address. For login, sending notifications, password reset, etc. If email is null then password change is possible only by admin                                                        | Regex validation                                            |
+| Phone              | string              | nvarchar(16)     |    ✔     | Phone number                                                                                                                                                                                 | Regex validation                                            |
+| Password           | string              | nvarchar(64)     |    ✔     | Hashed password with salt                                                                                                                                                                    | BCrypt                                                      |
+| LockedFailedLog    | DateTime            | datetime2(0)     |    ✔     | Account locked by excess number of login tries. Blockade expiration time.                                                                                                                    |                                                             |
+| FailedLoginCount   | int                 | int              |    ❌     | Number of failed logins (clear at successful login and at first login after LockedFailedLog). Max failed login tries specified in [[AuthenticationSettings]]                                 | Default: 0                                                  |
+| LockedOut          | bool                | bit              |    ❌     | Account locked out by administrator                                                                                                                                                          | Default: FALSE                                              |
+| PassChangeRequired | bool                | bit              |    ❌     | Password change is required                                                                                                                                                                  | Default: TRUE (when created by admin)                       |
+| IsDeleted          | bool                | bit              |    ❌     | Soft delete                                                                                                                                                                                  | Default: FALSE. Implements ISoftDelete                      |
+| Role               | Guid                | uniqueidentifier |    ❌     | Assign to role (there roles works also like user groups)                                                                                                                                     |                                                             |
+| UserClaims         | List<[[UserClaim]]> | --               |    ❌     | Assigned claims to the user. Base way is to assign claims to roles.                                                                                                                          | *relationship (separate table with FKs)*                    |
+| ==[[BaseEntity]]== | --                  | --               |    --    | Columns inherited from [[BaseEntity]] class.                                                                                                                                                 | --                                                          |
+  
+## Relationships  
+- Many-to-one with [[Role]]
+- Many-to-many with [[Claim]] (separate [[UserClaim]] FK's table with values)
+  
+## Indexes  
+- IX_User_UserName (Unique)
+- 
+  
+## Notes  
+* Implements ISoftDelete, Remember to apply proper mechanizm on Create.
+* At DEMO version there will be created few test accounts (few admins and ~2 users per role). Mark them as demo users and block for them: password change, remove permissions, delete account, block account(manual). 
