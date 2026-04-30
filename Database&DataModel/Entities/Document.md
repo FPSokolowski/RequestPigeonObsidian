@@ -1,7 +1,8 @@
 ## Description  
 Represents a core of any request document. 
-Approach TPT. This table represents common part of any document type. Each document consist of data from tables Document and Document{Type}. 
+Approach TPT. This table represents common part of any document type. Each document consist of data from tables Document and {Type}RequestDocument. 
 First phase there will be few types handle: Leave, Refund, Purchase, BusinessTrip, Credentials.
+Entity Document is **abstract**.
   
 ## Columns  
 | Name               | Type .NET            | Type DB                                              | Nullable | Description                                                                                                           | Notes                                           |
@@ -14,6 +15,7 @@ First phase there will be few types handle: Leave, Refund, Purchase, BusinessTri
 | TextContent        | string               | nvarchar(2048)                                       |    ✔     | Optional text (specification / explaination / reason / purpose / additional notes)                                    |                                                 |
 | TextMessage        | string               | nvarchar(1024)                                       |    ✔     | It's just a note. Not visible at document but sent with it as a sticky note additional informal message to acceptors. |                                                 |
 | RequestorId        | [[User]]             | uniqueidentifier                                     |    ❌     | User-requestor                                                                                                        | FK                                              |
+| Attachments        | List<[[Attachment]]> | --                                                   |    ✔     | Optional attachments                                                                                                  | *relationship*                                  |
 | Acceptances        | List<[[Acceptance]]> | --                                                   |    ❌     | Assigned decision-makers with decision data.                                                                          | *relationship (separate table with FKs)*        |
 | ==[[BaseEntity]]== | --                   | --                                                   |    --    | Columns inherited from [[BaseEntity]] class.                                                                          | --                                              |
   
