@@ -1,7 +1,8 @@
 ## Description  
 Represents a core of any request document. 
-Approach TPT. This table represents common part of any document type. Each document consist of data from tables Document and {Type}RequestDocument. 
-First phase there will be few types handle: Leave, Refund, Purchase, BusinessTrip, Credentials.
+Approach TPT. This table represents common part of any document type. Each document consists of data from tables Document and {Type}RequestDocument.
+Entity Document has no direct instances in the application. It is an abstract base class inherited by concrete request document classes, for example BusinessTripRequestDocument.
+MVP active document types: Leave, Purchase, Credentials, BusinessTrip. Other document tables may exist as prepared/future types, but they are not available in MVP UI.
 Entity Document is **abstract**.
   
 ## Columns  
@@ -14,14 +15,15 @@ Entity Document is **abstract**.
 | Priority           | [[DocumentPriority]] | `= [[DocumentPriority]].dbType`                      |    ❌     | Priority of the document                                                                                              |                                                 |
 | TextContent        | string               | nvarchar(2048)                                       |    ✔     | Optional text (specification / explaination / reason / purpose / additional notes)                                    |                                                 |
 | TextMessage        | string               | nvarchar(1024)                                       |    ✔     | It's just a note. Not visible at document but sent with it as a sticky note additional informal message to acceptors. |                                                 |
-| RequestorId        | [[User]]             | uniqueidentifier                                     |    ❌     | User-requestor                                                                                                        | FK                                              |
+| RequesterId        | [[User]]             | uniqueidentifier                                     |    ❌     | User who created the request                                                                                          | FK                                              |
 | Attachments        | List<[[Attachment]]> | --                                                   |    ✔     | Optional attachments                                                                                                  | *relationship*                                  |
-| Acceptances        | List<[[Acceptance]]> | --                                                   |    ❌     | Assigned decision-makers with decision data.                                                                          | *relationship (separate table with FKs)*        |
+| ApprovalSteps      | List<[[DocumentApprovalStep]]> | --                                        |    ❌     | Runtime approval workflow steps generated when the document is submitted.                                             | *relationship*                                  |
 | ==[[BaseEntity]]== | --                   | --                                                   |    --    | Columns inherited from [[BaseEntity]] class.                                                                          | --                                              |
   
 ## Relationships  
-- Many-to-one with [[User]] (as Requestor)
-- Many-to-many with [[Acceptance]] (separate [[DocumentAcceptance]] FK's table)
+- Many-to-one with [[User]] (as Requester)
+- One-to-many with [[Attachment]]
+- One-to-many with [[DocumentApprovalStep]]
 ## Indexes  
 - IX_Document_Type 
 - IX_Document_DateTime
@@ -29,3 +31,4 @@ Entity Document is **abstract**.
   
 ## Notes  
 * Settings for document Types are located in table [[DocumentSettings]]. Setting data should be cached.
+* Approval workflow uses [[DocumentApprovalStep]]. Legacy separate approval-link model is not used.

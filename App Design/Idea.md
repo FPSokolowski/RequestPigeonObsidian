@@ -5,7 +5,8 @@
 *Tworzona przy wykorzystaniu narzędzi AI (głównie Codex, ChatGPT, Stitch).*
 
 Główną funkcjonalnością aplikacji ma być przepływ dokumentów typu request w organizacji.
-Początkowo planowane jest obsługiwanie akcji takich jak **tworzenie**, **edycja**, **przypisywanie/wysyłanie**, **akceptacja/odrzucenie**, **archiwizowanie** dla dokumentów/requestów typu **wniosek o urlop**, **zakup**, **przyznanie uprawnień**, **refundacja kosztów**, **delegacja**. 
+Początkowo planowane jest obsługiwanie akcji takich jak **tworzenie**, **edycja**, **przypisywanie/wysyłanie**, **akceptacja/odrzucenie**, **zwrócenie do poprawy**, **anulowanie**, **archiwizowanie** dla dokumentów/requestów typu **wniosek o urlop**, **zakup**, **przyznanie uprawnień**, **wyjazd służbowy**.
+Model danych może być przygotowany pod kolejne typy dokumentów, ale w MVP dostępne w UI będą tylko wymienione wyżej typy.
 
 ## Tech stack:
 ### Backend

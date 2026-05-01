@@ -10,5 +10,4 @@ dbType: nvarchar(16)
 | SickLeave     |  3  | Choroba          | Urlop chorobowy                            |
 
 ### Future features:
-* Add OnDemand (paid 100% but with auto-acceptance (if allowed to use - yearly limit of on-demand-days))
-
+* Add OnDemand (paid 100% but with auto-approval if allowed to use - yearly limit of on-demand-days)

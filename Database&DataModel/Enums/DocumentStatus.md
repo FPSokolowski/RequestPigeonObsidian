@@ -8,6 +8,6 @@ dbType: nvarchar(16)
 | InReview  |  1  | Oczekiwanie na decyzję | Dokument dotarł do osób decyzyjnych i oczekuje na zatwierdzenie |
 | Approved  |  2  | Zatwierdzono           | Dokument został rozpatrzony pozytywnie                          |
 | Declined  |  3  | Odrzucono              | Wniosek został rozpatrzony negatywnie                           |
-| Cancelled |  4  | Anulowano              | Wniosek został anulowany                                        |
-
+| Returned  |  4  | Zwrócono do poprawy    | Wniosek został zwrócony do autora w celu poprawy                |
+| Cancelled |  5  | Anulowano              | Wniosek został anulowany                                        |
 
