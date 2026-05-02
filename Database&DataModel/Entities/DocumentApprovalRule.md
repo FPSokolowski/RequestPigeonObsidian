@@ -24,7 +24,7 @@ Rules are used by approval policy logic when a document is submitted. The result
 * IX_DocumentApprovalRule_DecisionMakerType_UserId_RoleOrClaimName
 
 ## Notes
-* Should be cached as include to DocumentSettings.
+* Post-MVP: should be cached as include to DocumentSettings.
 * At first phase this one will not be available for user via UI.
 * MVP supports simple role/user/direct-superior style rules.
 * Future features: RequiredAll, MinApprovalsNo, fallback rules, higher-level decision replacement, delegation.

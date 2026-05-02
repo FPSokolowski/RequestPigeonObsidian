@@ -1,6 +1,8 @@
 ## Description  
 Extends table [[Document]]s. It's one of document's types.
 
+**Scope: Post-MVP.** Generate entity/table as prepared model if convenient, but keep logic and UI disabled/commented in MVP.
+
 ## Columns  
 | Name                      | Type .NET                                     | Type DB          | Nullable | Description                                                                                               | Notes                                               |
 | ------------------------- | --------------------------------------------- | ---------------- | :------: | :-------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |

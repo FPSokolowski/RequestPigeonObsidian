@@ -18,6 +18,6 @@ Settings for documents. One record per [[DocumentType]] - each type can have dif
 - IX_DocumentTypeSettings_Type (Unique) 
   
 ## Notes  
-* Should be cached. 
+* Post-MVP: should be cached.
 * At first phase this one will not be available for user via UI
 * MVP does not include higher-level decision replacement, delegation, fallback rules or complex approval combinations.

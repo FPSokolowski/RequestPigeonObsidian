@@ -1,5 +1,7 @@
 ## Description  
 Logger of documents history (create, status change, modifications).
+
+**Scope: MVP.** Keep as simple document audit/history. Do not build advanced diagnostics or search UI in MVP.
   
 ## Columns  
 | Name               | Type .NET             | Type DB                         | Nullable | Description                                                                     | Notes |

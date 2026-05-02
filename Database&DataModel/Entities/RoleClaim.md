@@ -1,17 +1,21 @@
 ## Description  
-Connection between [[Role]] and [[Claim]]s. For now it handles only simple 2 states: connected (true) and not connected (false). 
+Connection between [[Role]] and [[Claim]]s.
+
+**Scope: MVP.** RoleClaim is the only source of app authorization claims in MVP.
 ## Columns  
 | Name               | Type .NET | Type DB          | Nullable | Description                                      | Notes |
 | ------------------ | --------- | ---------------- | :------: | :----------------------------------------------- | ----- |
-| Id                 | Guid      | uniqueidentifier |    ❌     | Primary key //is this necessary? Probably not... | PK    |
+| Id                 | Guid      | uniqueidentifier |    ❌     | Primary key                                      | PK    |
 | RoleId             | Guid      | uniqueidentifier |    ❌     | Role                                             | FK    |
 | ClaimId            | Guid      | uniqueidentifier |    ❌     | Claim                                            | FK    |
 | ==[[BaseEntity]]== | --        | --               |    --    | Columns inherited from [[BaseEntity]] class.     | --    |
   
 ## Relationships  
-- One-to-one with [[Role]]
-- One-to-one with [[Claim]]
+- Many-to-one with [[Role]]
+- Many-to-one with [[Claim]]
 ## Indexes  
+- IX_RoleClaim_RoleId_ClaimId (Unique)
 
 ## Notes  
-* Next step: add also a field Value to handle various claim types (as json-like string) with automatic parsing.
+* MVP uses bool-style claims. Existence of RoleClaim means role has this claim.
+* Post-MVP: add field Value to handle various claim types with automatic parsing.

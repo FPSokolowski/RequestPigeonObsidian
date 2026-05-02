@@ -1,5 +1,7 @@
 ## Description  
 Logger of app's events
+
+**Scope: Post-MVP.** For MVP use standard `ILogger`. Generate this entity/table as prepared model only if it does not slow implementation.
   
 ## Columns  
 | Name               | Type .NET | Type DB          | Nullable | Description                                  | Notes |

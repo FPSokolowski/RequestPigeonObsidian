@@ -30,5 +30,6 @@ Entity Document is **abstract**.
 - IX_Document_Type_Status
   
 ## Notes  
-* Settings for document Types are located in table [[DocumentSettings]]. Setting data should be cached.
+* Settings for document Types are located in table [[DocumentSettings]]. Post-MVP: setting data should be cached.
 * Approval workflow uses [[DocumentApprovalStep]]. Legacy separate approval-link model is not used.
+* When generating entities and DbContext, create prepared model for documented Post-MVP entities too, but keep Post-MVP logic/UI disabled or commented until explicitly activated.
